@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="FromMonday" type="id"/>
+    <item name="FromTuesday" type="id"/>
+    <item name="FromWednesday" type="id"/>
+    <item name="FromThursday" type="id"/>
+    <item name="FromFriday" type="id"/>
+    <item name="FromSaturday" type="id"/>
+    <item name="ToMonday" type="id"/>
+    <item name="ToTuesday" type="id"/>
+    <item name="ToWednesday" type="id"/>
+    <item name="ToThursday" type="id"/>
+    <item name="ToFriday" type="id"/>
+    <item name="ToSaturday" type="id"/>
+    <item name="MondayLinearLayout" type="id"/>
+    <item name="TuesdayLinearLayout" type="id"/>
+    <item name="WednesdayLinearLayout" type="id"/>
+    <item name="ThursdayLinearLayout" type="id"/>
+    <item name="FridayLinearLayout" type="id"/>
+    <item name="SaturdayLinearLayout" type="id"/>
+
+</resources>

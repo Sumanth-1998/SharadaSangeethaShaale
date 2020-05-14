@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "219666171976",
+    "firebase_url": "https://sharada-sangeetha-shaale.firebaseio.com",
+    "project_id": "sharada-sangeetha-shaale",
+    "storage_bucket": "sharada-sangeetha-shaale.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:219666171976:android:04ed509dc8a873fc84707d",
+        "android_client_info": {
+          "package_name": "com.example.sharadasangeethashaale"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "219666171976-glqhef4a6qjjvq6uud7vmggp4c5856ng.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.sharadasangeethashaale",
+            "certificate_hash": "d77814a21a4bc1f5ee8263ffd6da94c58a38715c"
+          }
+        },
+        {
+          "client_id": "219666171976-a9b3pv024j1lipei3iukm1pak3k6ogj9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCZhisKupKTOmh56SmBc0DYZBVJkSEyYMg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "219666171976-a9b3pv024j1lipei3iukm1pak3k6ogj9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

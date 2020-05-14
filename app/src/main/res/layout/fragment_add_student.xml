@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/frameLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginTop="16dp"
+    tools:context=".Add_student">
+
+
+    <EditText
+        android:id="@+id/name"
+        android:layout_width="365dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="33dp"
+        android:layout_marginLeft="33dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="33dp"
+        android:layout_marginRight="33dp"
+        android:ems="10"
+        android:hint="Student Name"
+        android:inputType="textPersonName"
+        android:textColor="@color/colorPrimaryDark"
+        android:textColorHighlight="@color/colorPrimaryDark"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/phone"
+        android:layout_width="365dp"
+        android:layout_height="43dp"
+        android:layout_marginStart="33dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="33dp"
+        android:ems="10"
+        android:hint="Contact Number"
+        android:inputType="phone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/name" />
+
+    <CheckBox
+        android:id="@+id/monday"
+        android:layout_width="107dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="14dp"
+        android:layout_marginLeft="18dp"
+        android:layout_marginTop="16dp"
+        android:text="Monday"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+    <CheckBox
+        android:id="@+id/thursday"
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
+        android:layout_marginStart="14dp"
+        android:layout_marginLeft="18dp"
+        android:layout_marginTop="16dp"
+        android:text="Thursday"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/monday" />
+
+    <CheckBox
+        android:id="@+id/tuesday"
+        android:layout_width="107dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="11dp"
+        android:layout_marginLeft="11dp"
+        android:layout_marginTop="16dp"
+        android:text="Tuesday"
+        android:textSize="18sp"
+        app:layout_constraintStart_toEndOf="@+id/monday"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+    <CheckBox
+        android:id="@+id/friday"
+        android:layout_width="107dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="11dp"
+        android:layout_marginLeft="11dp"
+        android:layout_marginTop="16dp"
+        android:text="Friday"
+        android:textSize="18sp"
+        app:layout_constraintStart_toEndOf="@+id/thursday"
+        app:layout_constraintTop_toBottomOf="@+id/tuesday" />
+
+    <CheckBox
+        android:id="@+id/wednesday"
+        android:layout_width="141dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="11dp"
+        android:layout_marginRight="11dp"
+        android:text="Wednesday"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tuesday"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+    <CheckBox
+        android:id="@+id/saturday"
+        android:layout_width="141dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="11dp"
+        android:layout_marginRight="11dp"
+        android:text="Saturday"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/friday"
+        app:layout_constraintTop_toBottomOf="@+id/wednesday" />
+
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="24dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="11dp"
+        android:fontFamily="sans-serif-condensed-medium"
+        android:text="DAYS OF THE WEEK"
+        android:textColor="@color/colorPrimaryDark"
+        android:textColorHighlight="@color/colorPrimaryDark"
+        android:textColorLink="@color/colorPrimaryDark"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/divider" />
+
+    <LinearLayout
+        android:id="@+id/verticalLinearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="17dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/divider2">
+
+
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/addStudent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="148dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="146dp"
+        android:backgroundTint="@color/colorPrimaryDark"
+        android:gravity="center"
+        android:text="ADD STUDENT"
+        android:textColor="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/verticalLinearLayout" />
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="409dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="12dp"
+        android:background="?android:attr/listDivider"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/phone" />
+
+    <View
+        android:id="@+id/divider2"
+        android:layout_width="409dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="15dp"
+        android:background="?android:attr/listDivider"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/thursday" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

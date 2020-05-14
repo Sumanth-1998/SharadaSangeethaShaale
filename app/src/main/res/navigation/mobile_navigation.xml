@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/classesToday">
+
+    <fragment
+        android:id="@+id/classesToday"
+        android:name="com.example.sharadasangeethashaale.ui.TodaysClasses.classesToday"
+        android:label="Today's Classes"
+        tools:layout="@layout/fragment_classes_today" />
+
+    <fragment
+        android:id="@+id/weeklySchedule"
+        android:name="com.example.sharadasangeethashaale.ui.WeeklySchedule.weeklySchedule"
+        android:label="Weekly Schedule"
+        tools:layout="@layout/fragment_weekly_schedule" />
+
+    <fragment
+        android:id="@+id/manageStudents"
+        android:name="com.example.sharadasangeethashaale.ui.ManageStudents.manageStudents"
+        android:label="Manage Students"
+        tools:layout="@layout/fragment_manage_students" />
+
+    <fragment
+        android:id="@+id/nav_tools"
+        android:name="com.example.sharadasangeethashaale.ui.tools.ToolsFragment"
+        android:label="@string/menu_tools"
+        tools:layout="@layout/fragment_tools" />
+
+    <fragment
+        android:id="@+id/nav_share"
+        android:name="com.example.sharadasangeethashaale.ui.share.ShareFragment"
+        android:label="@string/menu_share"
+        tools:layout="@layout/fragment_share" />
+
+    <fragment
+        android:id="@+id/nav_send"
+        android:name="com.example.sharadasangeethashaale.ui.send.SendFragment"
+        android:label="@string/menu_send"
+        tools:layout="@layout/fragment_send" />
+    <fragment
+        android:id="@+id/add_student"
+        android:name="com.example.sharadasangeethashaale.Add_student"
+        android:label="Add Student"
+        tools:layout="@layout/fragment_add_student" />
+</navigation>
