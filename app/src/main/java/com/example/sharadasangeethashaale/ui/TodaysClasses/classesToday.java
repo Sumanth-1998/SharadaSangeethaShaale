@@ -1,5 +1,6 @@
 package com.example.sharadasangeethashaale.ui.TodaysClasses;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,8 +14,12 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.example.sharadasangeethashaale.R;
+import com.github.jhonnyx2012.horizontalpicker.DatePickerListener;
+import com.github.jhonnyx2012.horizontalpicker.HorizontalPicker;
 
-public class classesToday extends Fragment {
+import org.joda.time.DateTime;
+
+public class classesToday extends Fragment implements DatePickerListener {
 
     private HomeViewModel homeViewModel;
 
@@ -23,13 +28,18 @@ public class classesToday extends Fragment {
         homeViewModel =
                 ViewModelProviders.of(this).get(HomeViewModel.class);
         View root = inflater.inflate(R.layout.fragment_classes_today, container, false);
-        final TextView textView = root.findViewById(R.id.text_home);
-        homeViewModel.getText().observe(this, new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-                textView.setText(s);
-            }
-        });
+        HorizontalPicker picker = (HorizontalPicker) root.findViewById(R.id.datePicker);
+
+        // initialize it and attach a listener
+
+        picker.setListener(this).init();
+
+        picker.setDate(new DateTime().plusDays(4));
         return root;
+    }
+
+    @Override
+    public void onDateSelected(DateTime dateSelected) {
+
     }
 }
