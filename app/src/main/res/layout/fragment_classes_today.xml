@@ -94,12 +94,10 @@
 
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/scheduleRecyclerView"
-        android:layout_width="445dp"
-        android:layout_height="678dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="5dp"
-        app:layout_constraintBottom_toTopOf="@+id/attendance"
+        android:id="@+id/todayRecyclerView"
+        android:layout_width="435dp"
+        android:layout_height="540dp"
+        android:layout_marginTop="5dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/divider7" />
@@ -109,12 +107,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
-        android:layout_marginEnd="136dp"
+        android:layout_marginEnd="124dp"
+        android:layout_marginBottom="16dp"
         android:background="@drawable/background_day_selected"
         android:foregroundGravity="center"
         android:padding="6dp"
         android:text="SUBMIT ATTENDANCE"
         android:textColor="#FFFFFF"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/scheduleRecyclerView" />
+        app:layout_constraintTop_toBottomOf="@+id/todayRecyclerView" />
 </androidx.constraintlayout.widget.ConstraintLayout>

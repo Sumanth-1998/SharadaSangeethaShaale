@@ -13,37 +13,59 @@
         android:orientation="vertical">
         <LinearLayout
             android:id="@+id/scheduleLinearLayout"
-            android:layout_width="402dp"
-            android:layout_height="31dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/scheduleRecyclerView"
+            app:layout_constraintStart_toStartOf="@+id/todayRecyclerView"
             app:layout_constraintTop_toBottomOf="@+id/divider7">
 
-            <CheckBox
-                android:id="@+id/nameCheckBox"
+            <Spinner
+                android:id="@+id/attendance_spinner"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="18dp"
-                android:drawableLeft="@android:color/transparent"
-                android:drawablePadding="18dp"
-                android:minWidth="210dp"
-                android:text="Sumanth" />
+                android:layout_marginStart="23dp"
+                android:background="@drawable/ic_spinner"
+                android:entries="@array/attendance_array"
+                android:layout_marginBottom="10dp"
+                android:minWidth="15dp"
+                android:padding="1dp"
+
+
+                />
+
+            <TextView
+                android:id="@+id/nameTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:text="Hello"
+                android:textSize="15dp"
+                android:textColor="@color/colorPrimaryDark"
+                android:textStyle="bold"
+                android:minWidth="158dp"/>
+
 
             <TextView
                 android:id="@+id/fromTime"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"
-                android:text="05:30 AM" />
+                android:text="05:30 AM"
+                android:textSize="15dp"
+                android:textColor="@color/colorPrimaryDark"
+                android:textStyle="bold"/>
 
             <TextView
                 android:id="@+id/toTime"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="26dp"
-                android:text="05:30 AM" />
+                android:layout_marginStart="20dp"
+                android:text="05:30 AM"
+                android:textStyle="bold"
+                android:textSize="15dp"
+                android:textColor="@color/colorPrimaryDark"/>
 
 
         </LinearLayout>
