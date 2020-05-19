@@ -84,12 +84,15 @@ public class weeklySchedule extends Fragment implements AdapterView.OnItemSelect
         spinneradapter.setDropDownViewResource(android.R.layout.simple_expandable_list_item_1);
 
         daySpinner.setAdapter(spinneradapter);
+
         deletefab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 for(CheckBox ch:checkBoxes){
+
                     if(ch.isChecked()){
+                        Toast.makeText(getContext(), "Hit button"+ch.isChecked(), Toast.LENGTH_SHORT).show();
                         String stuName=ch.getText().toString();
                         db.collection("students").whereEqualTo("name",stuName).get()
                                 .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
@@ -97,11 +100,13 @@ public class weeklySchedule extends Fragment implements AdapterView.OnItemSelect
                                     public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
                                         Student_pojo stu =queryDocumentSnapshots.toObjects(Student_pojo.class).get(0);
                                         List<String> daysOfWeek=stu.getDaysOfWeek();
+
                                         daysOfWeek.remove(dayName);
                                         Map<String,ArrayList<String>> times=stu.getTimes();
                                         times.remove(dayName);
                                         stu.setDaysOfWeek(daysOfWeek);
                                         stu.setTimes(times);
+
                                         db.collection("students").document(stu.getPhone()).set(stu)
                                                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                                                     @Override
@@ -295,11 +300,11 @@ public class weeklySchedule extends Fragment implements AdapterView.OnItemSelect
             @Override
             protected void onBindViewHolder(@NonNull Schedule_holder holder, int position, @NonNull final Student_pojo model) {
                 holder.nameCheckBox.setText(model.getName());
-                checkBoxes.clear();
+                //checkBoxes.clear();
 
                 checkBoxes.add(holder.nameCheckBox);
                 checkBoxNames.add(model.getName());
-                Toast.makeText(getActivity(), ""+checkBoxNames.toString(), Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getActivity(), ""+checkBoxNames.toString(), Toast.LENGTH_SHORT).show();
                 ArrayList<String> setimes=model.getTimes().get(dayName);
                 //Toast.makeText(getActivity(), ""+setimes.get(0), Toast.LENGTH_SHORT).show();
                 holder.fromTime.setText(setimes.get(0));
