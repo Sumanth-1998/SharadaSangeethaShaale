@@ -40,6 +40,7 @@ public class manageStudents extends Fragment {
     private FirestoreRecyclerAdapter<Student_pojo, Student_holder> adapter;
     RecyclerView recyclerView;
     FirebaseFirestore db;
+    List<String> daysOfWeek;
     public manageStudents(){
 
     }
@@ -61,7 +62,11 @@ public class manageStudents extends Fragment {
             protected void onBindViewHolder(@NonNull Student_holder holder, int position, @NonNull final Student_pojo model) {
                 holder.nameTextView.setText(model.getName());
                 holder.phoneTextView.setText(model.getPhone());
-                List<String> daysOfWeek=model.getDaysOfWeek();
+                holder.rem_clas.setText(Integer.toString(model.getRem_classes()));
+                if(model.getRem_classes()<=2){
+                    holder.rem_clas.setTextColor(getResources().getColor(R.color.red));
+                }
+                daysOfWeek=model.getDaysOfWeek();
                 for(int i=0;i<daysOfWeek.size();i++){
                     if(daysOfWeek.get(i).equals("Tuesday")){
                         daysOfWeek.remove(i);
@@ -110,6 +115,17 @@ public class manageStudents extends Fragment {
                     }
                 });
                 holder.nameLetter.setText(getInitials(model.getName()));
+                holder.studentCard.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Bundle bundle=new Bundle();
+                        bundle.putString("name",model.getName());
+                        bundle.putString("phone",model.getPhone());
+                        bundle.putString("daysOfWeek",String.join(" | ",daysOfWeek));
+                        bundle.putInt("rem_class",model.getRem_classes());
+                        Navigation.findNavController(getActivity(),R.id.nav_host_fragment).navigate(R.id.student_info,bundle);
+                    }
+                });
             }
 
             @NonNull

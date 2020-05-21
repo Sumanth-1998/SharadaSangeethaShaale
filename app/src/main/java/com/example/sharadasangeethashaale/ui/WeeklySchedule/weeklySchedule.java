@@ -220,7 +220,7 @@ public class weeklySchedule extends Fragment implements AdapterView.OnItemSelect
                                                         @Override
                                                         public void onSuccess(Void aVoid) {
                                                             Toast.makeText(getActivity(), "Student added successfully", Toast.LENGTH_SHORT).show();
-                                                            Navigation.findNavController(getActivity(),R.id.nav_host_fragment).navigate(R.id.weeklySchedule);
+                                                            dialog.dismiss();
                                                         }
                                                     })
                                                     .addOnFailureListener(new OnFailureListener() {

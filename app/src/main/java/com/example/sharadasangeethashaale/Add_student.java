@@ -168,7 +168,7 @@ public class Add_student extends Fragment {
                     }
                 }
                 if (flag == 0) {
-                    db.collection("students").document(phone).set(new Student_pojo(name, daysOfWeek,times,"active"))
+                    db.collection("students").document(phone).set(new Student_pojo(name, daysOfWeek,times,"active",0,0))
                             .addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {

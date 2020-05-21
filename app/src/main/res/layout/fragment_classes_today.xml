@@ -118,4 +118,33 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/todayRecyclerView" />
+    <Button
+        android:id="@+id/updateAttendance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="124dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/background_day_selected"
+        android:foregroundGravity="center"
+        android:padding="6dp"
+        android:text="UPDATE ATTENDANCE"
+        android:textColor="#FFFFFF"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/todayRecyclerView" />
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/addStuAtt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="@dimen/fab_margin"
+        android:layout_marginEnd="28dp"
+        android:layout_marginRight="28dp"
+        android:layout_marginBottom="42dp"
+        android:backgroundTint="@color/colorPrimaryDark"
+        android:src="@drawable/ic_add"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

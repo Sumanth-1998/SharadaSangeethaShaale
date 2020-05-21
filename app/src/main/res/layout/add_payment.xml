@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <Spinner
+        android:id="@+id/nameSpinner"
+        style="@style/overlap"
+        android:layout_width="250dp"
+        android:layout_height="52dp"
+        android:layout_marginStart="41dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="42dp"
+        android:background="@drawable/ic_spinner"
+        android:gravity="center"
+        android:spinnerMode="dropdown"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        ></Spinner>
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="13dp"
+        android:background="#ffffff"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:text="Select Student"
+        android:textColor="@color/colorPrimaryDark"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/nameSpinner"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:layout_width="0dp"
+        android:id="@+id/amount"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="15dp"
+        android:hint="Enter Amount Paid"
+
+        app:layout_constraintEnd_toEndOf="@id/nameSpinner"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@id/nameSpinner"
+        app:layout_constraintTop_toBottomOf="@+id/nameSpinner" />
+
+    <Button
+        android:id="@+id/addPayment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="72dp"
+        android:layout_marginTop="12dp"
+        android:background="@color/colorPrimaryDark"
+        android:gravity="center"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:text="ADD PAYMENT"
+        android:textColor="#FFFFFF"
+        app:layout_constraintStart_toStartOf="@id/amount"
+        app:layout_constraintTop_toBottomOf="@+id/amount"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="15dp"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -14,7 +14,7 @@ public class Student_holder extends RecyclerView.ViewHolder {
     public TextView nameTextView,phoneTextView,daysOfWeek;
     public CardView studentCard;
     public ImageButton deleteButton;
-    public TextView nameLetter;
+    public TextView nameLetter,rem_clas;
 
     public Student_holder(@NonNull View itemView) {
         super(itemView);
@@ -24,5 +24,6 @@ public class Student_holder extends RecyclerView.ViewHolder {
         this.studentCard=itemView.findViewById(R.id.studentCardView);
         this.deleteButton=itemView.findViewById(R.id.deleteButton);
         this.nameLetter=itemView.findViewById(R.id.nameLetter);
+        this.rem_clas=itemView.findViewById(R.id.rem_clas);
     }
 }

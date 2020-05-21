@@ -13,16 +13,35 @@ public class Student_pojo {
     List<String> daysOfWeek;
     Map<String, ArrayList<String>> times;
     String status;
+    int rem_classes,credits;
     public Student_pojo() {
         //required constructor
     }
 
-    public Student_pojo(String name, List<String> daysOfWeek,Map<String, ArrayList<String>> times,String status) {
+    public Student_pojo(String name, List<String> daysOfWeek,Map<String, ArrayList<String>> times,String status,int rem_classes,int credits) {
         this.name = name;
         this.phone = phone;
         this.daysOfWeek = daysOfWeek;
         this.times=times;
         this.status=status;
+        this.rem_classes=rem_classes;
+        this.credits=credits;
+    }
+
+    public int getRem_classes() {
+        return rem_classes;
+    }
+
+    public void setRem_classes(int rem_classes) {
+        this.rem_classes = rem_classes;
+    }
+
+    public int getCredits() {
+        return credits;
+    }
+
+    public void setCredits(int credits) {
+        this.credits = credits;
     }
 
     public String getStatus() {
