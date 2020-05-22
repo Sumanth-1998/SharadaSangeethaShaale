@@ -59,7 +59,7 @@ public class manageStudents extends Fragment {
         adapter=new FirestoreRecyclerAdapter<Student_pojo, Student_holder>(options) {
             @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
-            protected void onBindViewHolder(@NonNull Student_holder holder, int position, @NonNull final Student_pojo model) {
+            protected void onBindViewHolder(@NonNull final Student_holder holder, int position, @NonNull final Student_pojo model) {
                 holder.nameTextView.setText(model.getName());
                 holder.phoneTextView.setText(model.getPhone());
                 holder.rem_clas.setText(Integer.toString(model.getRem_classes()));
@@ -82,7 +82,13 @@ public class manageStudents extends Fragment {
                         daysOfWeek.add(i,""+c);
                     }
                 }
-                holder.daysOfWeek.setText(String.join(" | ",daysOfWeek));
+                String str="";
+                for(String s:daysOfWeek){
+                    str+=s+" | ";
+
+                }
+                str=str.substring(0,str.lastIndexOf(" | "));
+                holder.daysOfWeek.setText(str);
                 holder.deleteButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -121,7 +127,9 @@ public class manageStudents extends Fragment {
                         Bundle bundle=new Bundle();
                         bundle.putString("name",model.getName());
                         bundle.putString("phone",model.getPhone());
-                        bundle.putString("daysOfWeek",String.join(" | ",daysOfWeek));
+                        String str=holder.daysOfWeek.getText().toString();
+                        bundle.putString("credits",Integer.toString(model.getCredits()));
+                        bundle.putString("daysOfWeek",str);
                         bundle.putInt("rem_class",model.getRem_classes());
                         Navigation.findNavController(getActivity(),R.id.nav_host_fragment).navigate(R.id.student_info,bundle);
                     }

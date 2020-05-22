@@ -25,7 +25,7 @@
                 android:id="@+id/attendance_spinner"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="23dp"
+                android:layout_marginStart="38dp"
                 android:background="@drawable/ic_spinner"
                 android:entries="@array/attendance_array"
                 android:layout_marginBottom="10dp"
@@ -44,14 +44,14 @@
                 android:textSize="15dp"
                 android:textColor="@color/colorPrimaryDark"
                 android:textStyle="bold"
-                android:minWidth="158dp"/>
+                android:minWidth="132dp"/>
 
 
             <TextView
                 android:id="@+id/fromTime"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="5dp"
+                android:layout_marginStart="0dp"
                 android:text="05:30 AM"
                 android:textSize="15dp"
                 android:textColor="@color/colorPrimaryDark"

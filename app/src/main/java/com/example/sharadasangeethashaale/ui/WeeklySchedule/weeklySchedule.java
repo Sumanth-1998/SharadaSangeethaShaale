@@ -138,7 +138,7 @@ public class weeklySchedule extends Fragment implements AdapterView.OnItemSelect
             public void onClick(View v) {
                 dialog.setContentView(R.layout.add_student_dialog);
                 final Spinner studentSpinner=dialog.findViewById(R.id.studentSpinner);
-                db.collection("students").get()
+                db.collection("students").whereEqualTo("status","active").get()
                         .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                             @Override
                             public void onSuccess(QuerySnapshot queryDocumentSnapshots) {

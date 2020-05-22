@@ -74,7 +74,7 @@ public class paymentsFragment extends Fragment {
             public void onClick(View v) {
                 dialog.setContentView(R.layout.add_payment);
                 final Spinner studentSpinner=dialog.findViewById(R.id.nameSpinner);
-                db.collection("students").get()
+                db.collection("students").whereEqualTo("status","active").get()
                         .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                             @Override
                             public void onSuccess(QuerySnapshot queryDocumentSnapshots) {

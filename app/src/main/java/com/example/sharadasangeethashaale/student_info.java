@@ -42,7 +42,7 @@ import java.util.List;
  * A simple {@link Fragment} subclass.
  */
 public class student_info extends Fragment {
-    TextView nameTextView,phoneTextView,daysOfWeek,rem_clas,nameLetter;
+    TextView nameTextView,phoneTextView,daysOfWeek,rem_clas,nameLetter,credits;
     RecyclerView paymentRV,attRV;
     FirebaseFirestore db;
     FirestoreRecyclerAdapter<payments_pojo,student_payment_holder> paymentAdapter;
@@ -74,6 +74,11 @@ public class student_info extends Fragment {
         phoneTextView.setText(getArguments().getString("phone"));
         daysOfWeek.setText(getArguments().getString("daysOfWeek"));
         rem_clas.setText(Integer.toString(getArguments().getInt("rem_class")));
+        if(getArguments().getInt("rem_class")<=2){
+            rem_clas.setTextColor(getResources().getColor(R.color.red));
+        }
+        credits=root.findViewById(R.id.credits);
+        credits.setText(getArguments().getString("credits"));
         paymentRV=root.findViewById(R.id.studentPaymentRecyclerView);
         attRV=root.findViewById(R.id.studentAttendanceRecyclerView);
         paymentRV.setHasFixedSize(true);

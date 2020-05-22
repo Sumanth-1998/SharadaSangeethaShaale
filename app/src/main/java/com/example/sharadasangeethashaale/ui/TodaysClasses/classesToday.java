@@ -120,7 +120,7 @@ public class classesToday extends Fragment implements DatePickerListener {
                 title.setText("ADD STUDENT TO TODAY'S CLASS");
                 submitButton.setText("ADD TO CLASS");
                 final Spinner studentSpinner=dialog.findViewById(R.id.studentSpinner);
-                db.collection("students").get()
+                db.collection("students").whereEqualTo("status","active").get()
                         .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                             @Override
                             public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
@@ -446,7 +446,7 @@ public class classesToday extends Fragment implements DatePickerListener {
             displayPresentAttendance(dateSelected);
             fab.setVisibility(View.INVISIBLE);
         }
-        else if(dateSelected.getDayOfYear()==new DateTime().getDayOfYear()){
+        else{//(dateSelected.getDayOfYear()==new DateTime().getDayOfYear()){
 
             db.collection("attendance").document(date).collection("student").get()
                     .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
@@ -467,11 +467,11 @@ public class classesToday extends Fragment implements DatePickerListener {
                     });
             fab.setVisibility(View.VISIBLE);
         }
-        else {
+        /*else {
             displayOldAttendance();
             fab.setVisibility(View.VISIBLE);
 
-        }
+        }*/
     }
     public void displayPresentAttendance(DateTime dateSelected){
         attendance.setVisibility(View.INVISIBLE);
@@ -496,7 +496,7 @@ public class classesToday extends Fragment implements DatePickerListener {
                 holder.fromTime.setText(model.getTimes().get(dayName).get(0));
                 holder.toTime.setText(model.getTimes().get(dayName).get(1));
                 cardsList.add(holder.cardView);
-                attendance.setVisibility(View.INVISIBLE);
+                attendance.setVisibility(View.VISIBLE);
             }
 
             @NonNull
