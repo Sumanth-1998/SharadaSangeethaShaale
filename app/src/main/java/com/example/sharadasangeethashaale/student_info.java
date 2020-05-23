@@ -3,6 +3,8 @@ package com.example.sharadasangeethashaale;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -72,6 +74,15 @@ public class student_info extends Fragment {
         nameLetter.setText(getInitials(getArguments().getString("name")));
         nameTextView.setText(getArguments().getString("name"));
         phoneTextView.setText(getArguments().getString("phone"));
+        phoneTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent callIntent = new Intent(Intent.ACTION_DIAL);
+                callIntent.setData( Uri.parse("tel:" + phoneTextView.getText().toString()) );
+                callIntent.setFlags( Intent.FLAG_ACTIVITY_NEW_TASK );
+                startActivity( callIntent );
+            }
+        });
         daysOfWeek.setText(getArguments().getString("daysOfWeek"));
         rem_clas.setText(Integer.toString(getArguments().getInt("rem_class")));
         if(getArguments().getInt("rem_class")<=2){
