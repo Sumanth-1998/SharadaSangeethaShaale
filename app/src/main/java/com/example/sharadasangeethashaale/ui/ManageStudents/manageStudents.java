@@ -2,6 +2,8 @@ package com.example.sharadasangeethashaale.ui.ManageStudents;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -62,6 +64,15 @@ public class manageStudents extends Fragment {
             protected void onBindViewHolder(@NonNull final Student_holder holder, int position, @NonNull final Student_pojo model) {
                 holder.nameTextView.setText(model.getName());
                 holder.phoneTextView.setText(model.getPhone());
+                holder.phoneTextView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent callIntent = new Intent(Intent.ACTION_DIAL);
+                        callIntent.setData( Uri.parse("tel:" + model.getPhone()) );
+                        callIntent.setFlags( Intent.FLAG_ACTIVITY_NEW_TASK );
+                        startActivity( callIntent );
+                    }
+                });
                 holder.rem_clas.setText(Integer.toString(model.getRem_classes()));
                 if(model.getRem_classes()<=2){
                     holder.rem_clas.setTextColor(getResources().getColor(R.color.red));
