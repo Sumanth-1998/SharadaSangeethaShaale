@@ -92,7 +92,7 @@ public class weeklySchedule extends Fragment implements AdapterView.OnItemSelect
                 for(CheckBox ch:checkBoxes){
 
                     if(ch.isChecked()){
-                        Toast.makeText(getContext(), "Hit button"+ch.isChecked(), Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(getContext(), "Hit button"+ch.isChecked(), Toast.LENGTH_SHORT).show();
                         String stuName=ch.getText().toString();
                         db.collection("students").whereEqualTo("name",stuName).get()
                                 .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {

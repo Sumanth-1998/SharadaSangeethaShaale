@@ -149,7 +149,7 @@ public class manageStudents extends Fragment {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getActivity(), "Pressed", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getActivity(), "Pressed", Toast.LENGTH_SHORT).show();
                 Navigation.findNavController(getActivity(),R.id.nav_host_fragment).navigate(R.id.add_student);
             }
         });

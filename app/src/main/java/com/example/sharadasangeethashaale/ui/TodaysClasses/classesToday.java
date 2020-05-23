@@ -1,8 +1,10 @@
 package com.example.sharadasangeethashaale.ui.TodaysClasses;
 
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.TimePickerDialog;
+import android.content.DialogInterface;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
@@ -83,7 +85,7 @@ public class classesToday extends Fragment implements DatePickerListener {
     attendance_pojo att;
     WriteBatch batch1;
     List<String> attNamesList,allNamesDisplayed;
-    FloatingActionButton fab;
+    FloatingActionButton fab,cancelClassButton;
     Dialog dialog;
     private TextView timeTextView;
     TimePickerDialog tpick;
@@ -98,6 +100,7 @@ public class classesToday extends Fragment implements DatePickerListener {
         cardsList=new ArrayList<>();
         dialog=new Dialog(getContext());
         fab=root.findViewById(R.id.addStuAtt);
+        cancelClassButton=root.findViewById(R.id.cancelClassButton);
         allNamesDisplayed=new ArrayList<>();
         addstuspinneritems=new ArrayList<>();
         updateAttendance=root.findViewById(R.id.updateAttendance);
@@ -188,9 +191,8 @@ public class classesToday extends Fragment implements DatePickerListener {
                             ((TextInputLayout)toTv.getParent()).setError("Please select end time");
                         }
                         if(flag==0){
-                            SimpleDateFormat sdf=new SimpleDateFormat("dd-MM-yyyy");
-                            String date=sdf.format(new Date());
-                            attendance_pojo at=new attendance_pojo(entName,fromTime,toTime,"P  ",getPhone.get(entName),new Date());
+
+                            attendance_pojo at=new attendance_pojo(entName,fromTime,toTime,"P  ",getPhone.get(entName),dateChosen.toDate());
                             DocumentReference df=db.collection("attendance").document(date).collection("student").document(at.getName());
                             batch2.set(df,at);
 
@@ -245,7 +247,7 @@ public class classesToday extends Fragment implements DatePickerListener {
             public void onClick(View v) {
                 Log.d("Phone getss",phone.toString());
                 batch1 = db.batch();
-                Toast.makeText(getActivity(), "Update Hit", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getActivity(), "Update Hit", Toast.LENGTH_SHORT).show();
                 db.collection("attendance").document(date).collection("student").get()
                         .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                             @Override
@@ -262,7 +264,7 @@ public class classesToday extends Fragment implements DatePickerListener {
 
                                     for(CardView cardView:cardsList) {
                                         final String attendance = ((Spinner) cardView.findViewById(R.id.attendance_spinner)).getSelectedItem().toString();
-                                        Toast.makeText(getContext(), "Hit", Toast.LENGTH_SHORT).show();
+                                        //Toast.makeText(getContext(), "Hit", Toast.LENGTH_SHORT).show();
                                         name = ((TextView) cardView.findViewById(R.id.nameTextView)).getText().toString();
                                         String fromtime = ((TextView) cardView.findViewById(R.id.fromTime)).getText().toString();
                                         String toTime = ((TextView) cardView.findViewById(R.id.toTime)).getText().toString();
@@ -337,13 +339,14 @@ public class classesToday extends Fragment implements DatePickerListener {
         attendance.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //Toast.makeText(getActivity(), "attendance button hit", Toast.LENGTH_SHORT).show();
                 Log.d("Phone get1",phone.toString());
                 WriteBatch batch = db.batch();
                 if(cardsList!=null){
 
                     for(CardView cardView:cardsList){
                         final String attendance=((Spinner)cardView.findViewById(R.id.attendance_spinner)).getSelectedItem().toString();
-                        Toast.makeText(getContext(), "Hiiiiiiit", Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(getContext(), "Hiiiiiiit", Toast.LENGTH_SHORT).show();
                         name=((TextView)cardView.findViewById(R.id.nameTextView)).getText().toString();
                         String fromtime=((TextView)cardView.findViewById(R.id.fromTime)).getText().toString();
                         String toTime=((TextView)cardView.findViewById(R.id.toTime)).getText().toString();
@@ -389,7 +392,35 @@ public class classesToday extends Fragment implements DatePickerListener {
                 }
             }
         });
+        cancelClassButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
+                AlertDialog.Builder builder=new AlertDialog.Builder(getActivity());
+                builder.setMessage("Are you sure to cancel the class?");
+                builder.setTitle("Alert!");
+                builder.setPositiveButton(
+                        "Yes",
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+
+                                for(CardView c:cardsList){
+                                    ((Spinner)c.findViewById(R.id.attendance_spinner)).setSelection(getPosition("C  "));
+                                }
+                                if(attendance.getVisibility()==View.VISIBLE)
+                                    attendance.performClick();
+                                else if(updateAttendance.getVisibility()==View.VISIBLE)
+                                    updateAttendance.performClick();
+
+                            }
+                        }
+                );
+                AlertDialog dialog=builder.create();
+                dialog.show();
+
+            }
+        });
 
 
 
@@ -496,7 +527,14 @@ public class classesToday extends Fragment implements DatePickerListener {
                 holder.fromTime.setText(model.getTimes().get(dayName).get(0));
                 holder.toTime.setText(model.getTimes().get(dayName).get(1));
                 cardsList.add(holder.cardView);
-                attendance.setVisibility(View.VISIBLE);
+                if(dateChosen.getDayOfYear()>new DateTime().getDayOfYear()) {
+                    //displayPresentAttendance(dateSelected);
+                    attendance.setVisibility(View.INVISIBLE);
+                    cancelClassButton.setVisibility(View.INVISIBLE);
+                }else {
+                    attendance.setVisibility(View.VISIBLE);
+                    cancelClassButton.setVisibility(VISIBLE);
+                }
             }
 
             @NonNull
@@ -506,22 +544,26 @@ public class classesToday extends Fragment implements DatePickerListener {
                 return new today_class_adapter(v);
             }
         };
-        /*if(dateSelected.getDayOfYear()>new DateTime().getDayOfYear()) {
-            //displayPresentAttendance(dateSelected);
-            attendance.setVisibility(View.INVISIBLE);
-        }else{
-            attendance.setVisibility(View.VISIBLE);
-        }*/
+
         adapter.startListening();
         attendance.setText("SUBMIT ATTENDANCE");
-
+        if(dateChosen.getDayOfYear()>new DateTime().getDayOfYear()) {
+            //displayPresentAttendance(dateSelected);
+            attendance.setVisibility(View.INVISIBLE);
+            cancelClassButton.setVisibility(View.INVISIBLE);
+        }else {
+            attendance.setVisibility(View.VISIBLE);
+            cancelClassButton.setVisibility(VISIBLE);
+        }
         recyclerView.setAdapter(adapter);
     }
     public void displayOldAttendance(){
         flag=0;
         //cardsList.clear();
         allNamesDisplayed.clear();
+        cancelClassButton.setVisibility(VISIBLE);
         phone.clear();
+        Log.d("Date content",date);
         Query query=db.collection("attendance").document(date).collection("student");
         FirestoreRecyclerOptions<attendance_pojo> options=new FirestoreRecyclerOptions.Builder<attendance_pojo>()
                 .setQuery(query,attendance_pojo.class)

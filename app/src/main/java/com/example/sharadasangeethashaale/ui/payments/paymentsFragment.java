@@ -126,7 +126,7 @@ public class paymentsFragment extends Fragment {
                                                         public void onSuccess(Void aVoid) {
                                                             Toast.makeText(getActivity(),"Payment added successfully",Toast.LENGTH_SHORT);
                                                             int amt_int=Integer.parseInt(amt);
-
+                                                            dialog.dismiss();
                                                             int credits=student.getCredits();
                                                             int no_of_classes=(credits+amt_int)/CLASS_FEES;
                                                             credits=(credits+amt_int)-(no_of_classes*CLASS_FEES);
