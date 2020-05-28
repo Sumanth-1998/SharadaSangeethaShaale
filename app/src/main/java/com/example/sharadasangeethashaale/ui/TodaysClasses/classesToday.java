@@ -201,6 +201,7 @@ public class classesToday extends Fragment implements DatePickerListener {
                                 @Override
                                 public void onSuccess(Void aVoid) {
                                     Toast.makeText(getActivity(), "Student Added Successfully!", Toast.LENGTH_SHORT).show();
+                                    dialog.dismiss();
                                 }
                             })
                                     .addOnFailureListener(new OnFailureListener() {
@@ -268,7 +269,7 @@ public class classesToday extends Fragment implements DatePickerListener {
                                         name = ((TextView) cardView.findViewById(R.id.nameTextView)).getText().toString();
                                         String fromtime = ((TextView) cardView.findViewById(R.id.fromTime)).getText().toString();
                                         String toTime = ((TextView) cardView.findViewById(R.id.toTime)).getText().toString();
-                                        attendance_pojo att = new attendance_pojo(name, fromtime, toTime, attendance, phone.get(name), new Date());
+                                        attendance_pojo att = new attendance_pojo(name, fromtime, toTime, attendance, phone.get(name), dateChosen.toDate());
                                         batch1.set(db.collection("attendance").document(date).collection("student").document(name), att);
                                         //Log.d("Break5",prev.get(name));
                                         if (prev.containsKey(name)){
