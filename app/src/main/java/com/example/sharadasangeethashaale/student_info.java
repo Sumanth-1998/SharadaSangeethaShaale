@@ -123,7 +123,7 @@ public class student_info extends Fragment {
         paymentAdapter.startListening();
         paymentRV.setAdapter(paymentAdapter);
         final TreeMap<String,String> att=new TreeMap<>(Collections.<String>reverseOrder());
-        Query s=db.collectionGroup("student").orderBy("classDate", Query.Direction.ASCENDING).whereEqualTo("name",name);
+        Query s=db.collectionGroup("student").orderBy("classDate", Query.Direction.ASCENDING).whereEqualTo("name",name).limit(30);
         final SimpleDateFormat sdf=new SimpleDateFormat("dd/MM/yyyy");
         s.get()
                 .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
