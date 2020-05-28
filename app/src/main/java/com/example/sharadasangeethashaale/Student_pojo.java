@@ -10,15 +10,16 @@ public class Student_pojo {
     String name;
     @DocumentId
     String phone;
+    String classType;
     List<String> daysOfWeek;
     Map<String, ArrayList<String>> times;
     String status;
-    int rem_classes,credits;
+    int rem_classes,credits,classFees;
     public Student_pojo() {
         //required constructor
     }
 
-    public Student_pojo(String name, List<String> daysOfWeek,Map<String, ArrayList<String>> times,String status,int rem_classes,int credits) {
+    public Student_pojo(String name, List<String> daysOfWeek,Map<String, ArrayList<String>> times,String status,int rem_classes,int credits,String classType,int classFees) {
         this.name = name;
         this.phone = phone;
         this.daysOfWeek = daysOfWeek;
@@ -26,6 +27,24 @@ public class Student_pojo {
         this.status=status;
         this.rem_classes=rem_classes;
         this.credits=credits;
+        this.classType=classType;
+        this.classFees=classFees;
+    }
+
+    public String getClassType() {
+        return classType;
+    }
+
+    public void setClassType(String classType) {
+        this.classType = classType;
+    }
+
+    public int getClassFees() {
+        return classFees;
+    }
+
+    public void setClassFees(int classFees) {
+        this.classFees = classFees;
     }
 
     public int getRem_classes() {

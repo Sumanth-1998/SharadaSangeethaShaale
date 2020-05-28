@@ -37,7 +37,10 @@ import com.google.protobuf.Internal;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.TreeMap;
 
 
 /**
@@ -119,19 +122,39 @@ public class student_info extends Fragment {
         };
         paymentAdapter.startListening();
         paymentRV.setAdapter(paymentAdapter);
+        final TreeMap<String,String> att=new TreeMap<>(Collections.<String>reverseOrder());
+        Query s=db.collectionGroup("student").orderBy("classDate", Query.Direction.ASCENDING).whereEqualTo("name",name);
+        final SimpleDateFormat sdf=new SimpleDateFormat("dd/MM/yyyy");
+        s.get()
+                .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                    @Override
+                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
 
+                        for(DocumentSnapshot documentSnapshot:queryDocumentSnapshots){
+                            Log.d("Extra",documentSnapshot.getData().toString());
+                            Log.d("Extra",documentSnapshot.getDate("classDate").toString());
+                            att.put(sdf.format(documentSnapshot.getDate("classDate")),getPresence(documentSnapshot.getString("attendance")));
+                        }
+                        attendance_adapter adap=new attendance_adapter(att);
+                        attRV.setAdapter(adap);
 
+                    }
+                });
 
-        Query attendanceQuery=db.collectionGroup("student").orderBy("classDate").whereEqualTo("name",name);
+        /*Query attendanceQuery=db.collectionGroup("student").whereEqualTo("name",name).orderBy("classDate", Query.Direction.ASCENDING);
+        Log.d("model",name);
         FirestoreRecyclerOptions attendanceoptions=new FirestoreRecyclerOptions.Builder<attendance_pojo>()
                 .setQuery(attendanceQuery,attendance_pojo.class)
                 .build();
+
         attendanceAdapter=new FirestoreRecyclerAdapter<attendance_pojo, student_attendance_holder>(attendanceoptions) {
             @Override
             protected void onBindViewHolder(@NonNull student_attendance_holder holder, int position, @NonNull attendance_pojo model) {
                 SimpleDateFormat sdf=new SimpleDateFormat("dd/MM/yyyy");
+                Log.d("Model",model.getClassDate().toString());
                 holder.date.setText(sdf.format(model.getClassDate()));
                 holder.presence.setText(getPresence(model.getAttendance()));
+
             }
 
             @NonNull
@@ -142,7 +165,7 @@ public class student_info extends Fragment {
             }
         };
         attendanceAdapter.startListening();
-        attRV.setAdapter(attendanceAdapter);
+        attRV.setAdapter(attendanceAdapter);*/
 
 
         deleteButton.setOnClickListener(new View.OnClickListener() {

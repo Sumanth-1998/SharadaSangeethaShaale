@@ -17,6 +17,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
@@ -40,7 +41,8 @@ import java.util.Map;
  * A simple {@link Fragment} subclass.
  */
 public class Add_student extends Fragment {
-
+    final int VOCAL_PRICE=100;
+    final int VEENA_PRICE=150;
     EditText nameEditText,phoneEditText;
     CheckBox mondaycb,tuesdaycb,wednesdaycb,thursdaycb,fridaycb,saturdaycb;
     Button addStudent;
@@ -168,7 +170,16 @@ public class Add_student extends Fragment {
                     }
                 }
                 if (flag == 0) {
-                    db.collection("students").document(phone).set(new Student_pojo(name, daysOfWeek,times,"active",0,0))
+                    Spinner typeSpinner=root.findViewById(R.id.typeSpinner);
+                    String choice=typeSpinner.getSelectedItem().toString();
+                    int price=-1;
+                    switch(choice){
+                        case "Vocals":price=VOCAL_PRICE;
+                        break;
+                        case "Veena":price=VEENA_PRICE;
+                        break;
+                    }
+                    db.collection("students").document(phone).set(new Student_pojo(name, daysOfWeek,times,"active",0,0,choice,price))
                             .addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {

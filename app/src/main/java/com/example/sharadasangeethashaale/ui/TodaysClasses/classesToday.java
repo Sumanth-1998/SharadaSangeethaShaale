@@ -352,9 +352,10 @@ public class classesToday extends Fragment implements DatePickerListener {
                         String toTime=((TextView)cardView.findViewById(R.id.toTime)).getText().toString();
                         attNamesList.add(name);
                         Log.d("Phone set",phone.toString());
-                        att=new attendance_pojo(name,fromtime,toTime,attendance,phone.get(name),new Date());
+                        att=new attendance_pojo(name,fromtime,toTime,attendance,phone.get(name),dateChosen.toDate());
                         DocumentReference df=db.collection("attendance").document(date).collection("student").document(att.getName());
                         batch.set(df,att);
+                        if(attendance.equals("P  "))
                         batch.update(db.collection("students").document(phone.get(name)), "rem_classes",FieldValue.increment(-1));
 
                         /*db.collection("attendance").document(date).collection("students").document(att.getName()).set(att)
@@ -465,6 +466,7 @@ public class classesToday extends Fragment implements DatePickerListener {
         //Toast.makeText(getActivity(), "Date set", Toast.LENGTH_SHORT).show();
         //Toast.makeText(getActivity(), ""+dateSelected.getDayOfWeek(), Toast.LENGTH_SHORT).show();
         //Log.d("Original",dateSelected.toString());
+        //adapter.notifyDataSetChanged();
         attendance.setVisibility(View.INVISIBLE);
         updateAttendance.setVisibility(View.INVISIBLE);
         dateChosen=dateSelected;
@@ -507,6 +509,7 @@ public class classesToday extends Fragment implements DatePickerListener {
     public void displayPresentAttendance(DateTime dateSelected){
         attendance.setVisibility(View.INVISIBLE);
         phone.clear();
+
         allNamesDisplayed.clear();
         //Toast.makeText(getActivity(), "Entered", Toast.LENGTH_SHORT).show();
         dayName = getDayName(dateSelected.getDayOfWeek());

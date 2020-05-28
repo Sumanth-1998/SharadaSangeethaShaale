@@ -48,7 +48,7 @@ import static android.icu.lang.UCharacter.GraphemeClusterBreak.L;
 public class paymentsFragment extends Fragment {
 
     private ToolsViewModel toolsViewModel;
-    final int CLASS_FEES=100;
+    int CLASS_FEES=-1;
     FloatingActionButton addPayment;
     RecyclerView recView;
     Dialog dialog;
@@ -125,6 +125,7 @@ public class paymentsFragment extends Fragment {
                                                         @Override
                                                         public void onSuccess(Void aVoid) {
                                                             Toast.makeText(getActivity(),"Payment added successfully",Toast.LENGTH_SHORT);
+                                                            CLASS_FEES=student.getClassFees();
                                                             int amt_int=Integer.parseInt(amt);
                                                             dialog.dismiss();
                                                             int credits=student.getCredits();
