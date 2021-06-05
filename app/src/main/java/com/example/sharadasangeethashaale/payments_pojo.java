@@ -2,6 +2,7 @@ package com.example.sharadasangeethashaale;
 
 import com.google.firebase.firestore.DocumentId;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class payments_pojo
@@ -22,6 +23,11 @@ public class payments_pojo
         this.name = name;
         this.date = date;
         this.amount = amount;
+    }
+
+    @Override
+    public String toString() {
+        return "Payment of *INR. "+this.amount+"* received from *"+this.name+"* with thanks on *"+new SimpleDateFormat("dd/MM/yyyy").format(this.date)+"*\n";
     }
 
     public String getPayment_id() {
