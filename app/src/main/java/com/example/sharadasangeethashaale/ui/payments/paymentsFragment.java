@@ -125,6 +125,7 @@ public class paymentsFragment extends Fragment {
                                                         @Override
                                                         public void onSuccess(Void aVoid) {
                                                             Toast.makeText(getActivity(),"Payment added successfully",Toast.LENGTH_SHORT);
+
                                                             CLASS_FEES=student.getClassFees();
                                                             int amt_int=Integer.parseInt(amt);
                                                             dialog.dismiss();
@@ -173,7 +174,7 @@ public class paymentsFragment extends Fragment {
             }
         });
 
-        Query query=db.collection("payments").orderBy("date");
+        Query query=db.collection("payments").orderBy("date", Query.Direction.DESCENDING).limit(50);
         FirestoreRecyclerOptions<payments_pojo> options=new FirestoreRecyclerOptions.Builder<payments_pojo>()
                 .setQuery(query,payments_pojo.class)
                 .build();

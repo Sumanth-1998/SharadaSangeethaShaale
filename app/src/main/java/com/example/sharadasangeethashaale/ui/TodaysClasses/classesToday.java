@@ -246,6 +246,7 @@ public class classesToday extends Fragment implements DatePickerListener {
         updateAttendance.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 Log.d("Phone getss",phone.toString());
                 batch1 = db.batch();
                 //Toast.makeText(getActivity(), "Update Hit", Toast.LENGTH_SHORT).show();
